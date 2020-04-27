@@ -1,0 +1,48 @@
+logging:
+  level:
+    org:
+      #   for debug purpose set to DEBUG and binder TRACE, otherwise INFO
+      hibernate:
+        SQL: info
+        type:
+          descriptor:
+            sql:
+              BasicBinder: info
+    ROOT: info
+
+spring:
+  datasource:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    #jdbc-url: jdbc:sqlserver://10.70.152.54:1433;databaseName=ets_oauth
+    jdbc-url: jdbc:sqlserver://localhost:1433;instanceName=BLACKMACHINESQL;databaseName=ECLAIM_OAUTH
+    username: sa
+    password: sa123
+  datasource-base:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    #jdbc-url: jdbc:sqlserver://10.70.152.54:1433;databaseName=ets_base
+    jdbc-url: jdbc:sqlserver://localhost:1433;instanceName=BLACKMACHINESQL;databaseName=ECLAIM_BASE
+    username: sa
+    password: sa123
+  jmx:
+    default-domain: etsApiOauthDomain
+  #    for init project only when schema.sql is available
+  #    initialization-mode: always
+  jpa:
+    #    hibernate:
+    #      ddl-auto: none
+    #      naming:
+    #        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+    properties:
+      hibernate.hbm2ddl: none
+      hibernate.physical_naming_strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+      hibernate.dialect: org.hibernate.dialect.SQLServer2012Dialect
+
+  ldap:
+    urls: ldap://192.168.46.147:389
+    base: ou=accounts,o=bni,dc=co,dc=id
+
+# --- server if jar
+server:
+  port: 8081
+  servlet:
+    context-path: /ets-api/oauth

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>lib</artifactId>
+    <version>1.0.1.RELEASE</version>
+    <name>lib</name>
+    <description>Library project</description>
+    <packaging>jar</packaging>
+
+    <parent>
+        <artifactId>parent-boot</artifactId>
+        <groupId>id.co.bni.ets</groupId>
+        <version>1.0.1.RELEASE</version>
+        <relativePath>../parent-boot</relativePath>
+    </parent>
+
+    <profiles>
+        <profile>
+            <id>thin-jar</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.springframework.boot.experimental</groupId>
+                        <artifactId>spring-boot-thin-maven-plugin</artifactId>
+                        <version>${thin.version}</version>
+                        <executions>
+                            <execution>
+                                <!-- Download the dependencies at build time -->
+                                <id>resolve</id>
+                                <goals>
+                                    <goal>resolve</goal>
+                                </goals>
+                                <inherited>false</inherited>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+</project>

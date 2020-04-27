@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>admin</artifactId>
+    <version>1.0.1.RELEASE</version>
+    <name>admin</name>
+    <description>Admin resource server</description>
+    <packaging>war</packaging>
+
+    <parent>
+        <groupId>id.co.bni.ets</groupId>
+        <artifactId>parent-tomcat</artifactId>
+        <version>1.0.1.RELEASE</version>
+        <relativePath>../parent-tomcat</relativePath>
+    </parent>
+
+    <properties>
+        <lib.version>1.0.1.RELEASE</lib.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <version>7.4.1.jre8</version>
+        </dependency>
+
+        <dependency>
+            <groupId>id.co.bni.ets</groupId>
+            <artifactId>lib</artifactId>
+            <version>${lib.version}</version>
+        </dependency>
+    </dependencies>
+
+</project>

@@ -1,0 +1,55 @@
+logging:
+  level:
+    org:
+      #   for debug purpose set to DEBUG and binder TRACE, otherwise INFO
+      hibernate:
+        SQL: info
+        type:
+          descriptor:
+            sql:
+              BasicBinder: info
+    ROOT: info
+
+spring:
+  datasource:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    #url: jdbc:sqlserver://10.70.152.54:1433;databaseName=ets_base
+    url: jdbc:sqlserver://localhost:1433;instanceName=BLACKMACHINESQL;databaseName=ECLAIM_BASE
+    username: sa
+    #password: Uat46
+    password: sa123
+  #    for init project only when schema.sql is available
+  #    initialization-mode: always
+  jmx:
+    default-domain: etsApiAdminDomain
+  jpa:
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+    #   for debug purpose set to true
+    show-sql: false
+  data:
+    web:
+      pageable:
+        default-page-size: 10
+        one-indexed-parameters: true
+  jackson:
+    time-zone: Asia/Jakarta
+
+security:
+  oauth2:
+    client:
+      client-id: core_client
+      client-secret: "@C0r3 Cl13nt"
+    resource:
+      token-info-uri: http://localhost:8080/eclaim-api/oauth/check_token
+      id: admin_resource
+      user-info-uri: http://localhost:8080/eclaim-api/oauth/profile/me
+      prefer-token-info: false
+
+# --- server if jar
+server:
+  port: 8083
+  servlet:
+    context-path: /eclaim-api/admin
